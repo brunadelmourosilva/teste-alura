@@ -1,13 +1,11 @@
 package br.com.alura.school.user;
 
-import br.com.alura.school.course.Course;
 import br.com.alura.school.enroll.models.Enroll;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,14 +38,6 @@ public class User {
     @Deprecated
     protected User() {}
 
-    public void addCourse(Course course) {
-        var enroll = new Enroll(course, this);
-
-        courses.add(enroll); //save enrolls in courses
-        course.getUsers().add(enroll); //save enrolls in users
-    }
-
-    //// TODO: 2/24/2023 create builder
     public User(String username, String email) {
         this.username = username;
         this.email = email;
