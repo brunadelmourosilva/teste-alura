@@ -1,5 +1,6 @@
-package br.com.alura.school.enroll;
+package br.com.alura.school.enroll.repositories;
 
+import br.com.alura.school.enroll.models.Enroll;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

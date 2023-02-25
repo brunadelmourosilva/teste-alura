@@ -1,5 +1,6 @@
 package br.com.alura.school.user;
 
+import br.com.alura.school.course.Course;
 import br.com.alura.school.enroll.models.Enroll;
 
 import javax.persistence.*;
@@ -39,7 +40,15 @@ public class User {
     @Deprecated
     protected User() {}
 
-    User(String username, String email) {
+    public void addCourse(Course course) {
+        var enroll = new Enroll(course, this);
+
+        courses.add(enroll); //save enrolls in courses
+        course.getUsers().add(enroll); //save enrolls in users
+    }
+
+    //// TODO: 2/24/2023 create builder
+    public User(String username, String email) {
         this.username = username;
         this.email = email;
     }
