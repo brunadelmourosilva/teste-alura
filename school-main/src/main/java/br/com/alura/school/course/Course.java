@@ -40,7 +40,6 @@ public class Course {
     @Deprecated
     protected Course() { }
 
-    //// TODO: 2/24/2023 add builder
     public Course(String code, String name, String description) {
         this.code = code;
         this.name = name;
@@ -55,7 +54,7 @@ public class Course {
         return code;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 

@@ -1,15 +1,14 @@
 package br.com.alura.school.enroll.controllers;
 
-import br.com.alura.school.course.Course;
-import br.com.alura.school.course.CourseRepository;
-import br.com.alura.school.enroll.NewEnrollRequest;
+import br.com.alura.school.enroll.dto.NewEnrollRequest;
+import br.com.alura.school.enroll.dto.response.EnrollResponse;
 import br.com.alura.school.enroll.services.EnrollService;
-import br.com.alura.school.user.User;
-import br.com.alura.school.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/courses")
@@ -24,5 +23,14 @@ public class EnrollController {
         enrollService.saveEnroll(courseCode, enrollRequest);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/enroll/report")
+    public ResponseEntity<List<EnrollResponse>> getEnrolls() {
+        var enrollResponse = enrollService.getEnrolls();
+
+        return enrollResponse.isEmpty() ?
+                    ResponseEntity.noContent().build() :
+                    ResponseEntity.ok(enrollResponse);
     }
 }

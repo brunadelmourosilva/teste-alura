@@ -1,4 +1,4 @@
-package br.com.alura.school.enroll;
+package br.com.alura.school.enroll.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
