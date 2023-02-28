@@ -1,4 +1,4 @@
-package br.com.alura.school.enroll.dto;
+package br.com.alura.school.enroll.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,6 +13,10 @@ public class NewEnrollRequest {
     private String username;
 
     public NewEnrollRequest() {
+    }
+
+    public NewEnrollRequest(String username) {
+        this.username = username;
     }
 
     public String getUsername() {

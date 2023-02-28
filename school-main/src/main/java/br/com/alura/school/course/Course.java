@@ -50,7 +50,7 @@ public class Course {
         return id;
     }
 
-    String getCode() {
+    public String getCode() {
         return code;
     }
 

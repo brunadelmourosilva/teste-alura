@@ -1,7 +1,7 @@
 package br.com.alura.school.enroll.services;
 
 import br.com.alura.school.course.CourseRepository;
-import br.com.alura.school.enroll.dto.NewEnrollRequest;
+import br.com.alura.school.enroll.dto.request.NewEnrollRequest;
 import br.com.alura.school.enroll.dto.response.EnrollResponse;
 import br.com.alura.school.enroll.exceptions.BadRequestException;
 import br.com.alura.school.enroll.exceptions.NotFoundException;
@@ -10,7 +10,6 @@ import br.com.alura.school.enroll.repositories.EnrollRepository;
 import br.com.alura.school.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -39,7 +38,6 @@ public class EnrollService {
         if (enrollRepository.existsByUserIdAndCourseId(userFound.getId(), courseFound.getId()))
             throw new BadRequestException(format("User %s already enrolled in %s course.", userFound.getUsername(), courseFound.getName()));
 
-        //// TODO: 2/25/2023 add logs
         var enroll = new Enroll(courseFound, userFound);
         enrollRepository.save(enroll);
     }
